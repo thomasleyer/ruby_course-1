@@ -22,7 +22,7 @@ class CoffeeMachine
 
   COFFEE_FOR_CUP = 8
   WATER_FOR_CUP = 150
-  CLEANING_INTERVALL = 12
+  CLEANING_INTERVAL = 12
 
   attr_reader :max_coffee, :max_water, :coffee_level, :water_level, :sum_of_cups, :cups_left
 
@@ -32,7 +32,7 @@ class CoffeeMachine
     @coffee_level = 0
     @water_level = 0
     @sum_of_cups = 0
-    @cups_left = CLEANING_INTERVALL
+    @cups_left = CLEANING_INTERVAL
   end
 
   def refill_coffee(amount)
@@ -70,7 +70,7 @@ class CoffeeMachine
 
   def clean
     return "Cleaning"
-    @cups_left = CLEANING_INTERVALL
+    @cups_left = CLEANING_INTERVAL
   end
 
   def info
