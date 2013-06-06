@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+require 'rake'
+
+desc "Say hello"
+task :hello do
+  puts "hello"
+end
+
+desc "Say world"
+task :world do
+  puts "world"
+end
+
+desc "Hello World"
+task :hello_world => [:hello, :world] do
+  puts "This is a nice day"
+end
+
+desc "Default"
+task :default => ["hello_world"]
