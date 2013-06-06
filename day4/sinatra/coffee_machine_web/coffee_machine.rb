@@ -42,6 +42,7 @@ class CoffeeMachine
       raise ToMuchCoffeeException
     else
       @coffee_level += amount
+      "Es wurden #{amount}g Kaffee aufgefuellt."
     end
   end
 
@@ -50,6 +51,7 @@ class CoffeeMachine
       raise ToMuchWaterException
     else
       @water_level += amount
+      "Es wurden #{amount}ml Wasser aufgefuellt."
     end
   end
 
