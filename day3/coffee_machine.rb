@@ -69,7 +69,6 @@ class CoffeeMachine
   end
 
   def clean
-    return "Cleaning"
     @cups_left = CLEANING_INTERVAL
   end
 
