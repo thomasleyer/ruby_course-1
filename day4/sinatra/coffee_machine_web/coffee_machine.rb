@@ -73,11 +73,11 @@ class CoffeeMachine
 
   def clean
     @cups_left = CLEANING_INTERVAL
+    "Reinigung beendet."
   end
 
   def info
-    info = "#### INFORMATIONEN ####\n"
-    info << "Fuellstand Kaffee: #{@coffee_level} g.\n"
+    info = "Fuellstand Kaffee: #{@coffee_level} g.\n"
     info << "Fuellstand Wasser: #{@water_level} ml.\n"
     info << "Gesamtzahl Tassen: #{@sum_of_cups}.\n"
     info <<  "Reinigung in #{@cups_left} Tassen.\n"

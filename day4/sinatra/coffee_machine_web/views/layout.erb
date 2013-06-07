@@ -1,11 +1,33 @@
 <!DOCYTYPE html>
 <html>
   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
       <link rel="stylesheet" href="/css/master.css" type="text/css" />
     <title>WebCoffeeMachine running with Sinatra</title>
   </head>
   <body>
-    <h1>WebCoffeeMachine</h1>
-    <img src="/images/water.jpg">
+    <section id="frontplate">
+    <img id="jura" src="/images/jura.png">
+    <h1>WebCoffee&trade;</h1>
+    <section id="info">
+      <%= yield %>
+    </section>
+    <section id="control"> 
+       <section id="forms">
+       <form id="coffee_form" name="coffee_form" action="/refill_coffee" method="post">
+        <input type="text" id="coffee_input" name="coffee_input"><br />
+        <button type="submit"><img src="images/bean.jpg"></button>
+      </form>
+      <form id="water_form" name="water_form" action="/refill_water" method="post">
+        <input type="text" id="water_input" name="water_input"><br />
+        <button type="submit"><img src="images/water.png"></button>
+      </form>
+      </form>
+      </section>
+      <section id="buttons">
+      <a href="/make"><button type="button"><img src="images/coffee.jpg"></button></a>
+      <a href="/clean"><button type="button"><img src="images/clean.png"></button></a>
+  </section>
+  </section>
   </body>
 </html>

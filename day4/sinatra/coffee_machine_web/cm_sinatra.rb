@@ -6,48 +6,52 @@ class WebCoffeeMachine < Sinatra::Base
   set :cm, CoffeeMachine.new
 
   get '/' do
-    erb :layout
-  end
-
-  get '/info' do
-    settings.cm.info
+   @info = settings.cm.info
+   erb :info
   end
 
   get '/fill' do
     settings.cm.refill_water(1000)
     settings.cm.refill_coffee(100)
-    "filled"
-  end
-  
-  get '/refill_coffee/:id' do
-    amount = params[:id]
-    begin
-      settings.cm.refill_coffee(amount.to_i)
-    rescue ToMuchCoffeeException
-      "Zuviel Kaffee eingefuellt, bitte Fuellmenge reduzieren."
-    end
+    @info = "filled"
+    erb :info
   end
 
-  get '/refill_water/:id' do
-    amount = params[:id]
+  get '/clean' do
+    @info = settings.cm.clean
+    erb :info
+  end
+  
+  post '/refill_coffee' do
+    amount = params['coffee_input'].to_i
     begin
-      settings.cm.refill_water(amount.to_i)
-    rescue ToMuchWaterException
-      "Zuviel Wasser eingefuellt, bitte Fuellmenge reduzieren." 
+      @info = settings.cm.refill_coffee(amount)
+    rescue ToMuchCoffeeException
+     @info = "Zuviel Kaffee eingefuellt, bitte Fuellmenge reduzieren."
     end
+    erb :info
+  end
+
+  post '/refill_water' do
+    amount = params['water_input'].to_i
+    begin
+     @info = settings.cm.refill_water(amount)
+    rescue ToMuchWaterException
+      @info ="Zuviel Wasser eingefuellt, bitte Fuellmenge reduzieren." 
+    end
+    erb :info
   end
 
   get '/make' do
     begin
-      settings.cm.make_coffee
+      @info = settings.cm.make_coffee
     rescue NoCoffeeException
-      "Bitte Kaffee auffuellen."
+     @info = "Bitte Kaffee auffuellen."
     rescue NoWaterException
-      "Bitte Wasser auffuellen."
+     @info = "Bitte Wasser auffuellen."
     end
+    erb :info
   end
 end
-
-#settings parameter
 
 WebCoffeeMachine.run!
