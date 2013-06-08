@@ -10,13 +10,6 @@ class WebCoffeeMachine < Sinatra::Base
    erb :info
   end
 
-  get '/fill' do
-    settings.cm.refill_water(1000)
-    settings.cm.refill_coffee(100)
-    @info = "filled"
-    erb :info
-  end
-
   get '/clean' do
     @info = settings.cm.clean
     erb :info
